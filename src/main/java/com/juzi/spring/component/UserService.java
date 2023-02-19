@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 /**
  * @author codejuzi
  */
-@Service
+@Service(value = "myUserService")
 public class UserService {
 }

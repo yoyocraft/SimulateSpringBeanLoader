@@ -14,7 +14,7 @@ public class MySpringApplicationContextTest {
     @Test
     public void testIOC() {
         MySpringApplicationContext ioc = new MySpringApplicationContext(MySpringConfig.class);
-        UserService userService = (UserService) ioc.getBean("userService");
+        UserService userService = (UserService) ioc.getBean("myUserService");
         System.out.println("userService = " + userService);
     }
 

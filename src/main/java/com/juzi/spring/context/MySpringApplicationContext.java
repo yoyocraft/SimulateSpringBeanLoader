@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.io.File;
+import java.lang.annotation.Annotation;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -69,7 +70,15 @@ public class MySpringApplicationContext {
                                 aClass.isAnnotationPresent(Service.class) ||
                                 aClass.isAnnotationPresent(Repository.class)) {
 
-
+                            // 此处演示Service注解的Value属性
+                            if (aClass.isAnnotationPresent(Service.class)) {
+                                // 获取到该注解
+                                Service declaredAnnotation = aClass.getDeclaredAnnotation(Service.class);
+                                String value = declaredAnnotation.value();
+                                if(!"".equals(value)) {
+                                    className = value;
+                                }
+                            }
                             // 反射生成对象，注入容器
                             Class<?> clazz = Class.forName(classFullName);
                             Object instance = clazz.newInstance();
@@ -89,4 +98,5 @@ public class MySpringApplicationContext {
     public Object getBean(String className) {
         return singletonObjects.get(className);
     }
+
 }
