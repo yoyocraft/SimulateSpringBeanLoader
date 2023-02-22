@@ -4,8 +4,6 @@ import com.juzi.spring.component.UserService;
 import com.juzi.spring.config.MySpringConfig;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author codejuzi
  */
